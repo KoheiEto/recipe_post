@@ -13,4 +13,3 @@ class Recipe(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
 # データベースにデータ反映する＝マイグレーション
-# ssss
