@@ -1,5 +1,5 @@
 # 汎用ビューの読み込み
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView
 # モデルの読み込み
 from .models import Recipe
 
@@ -14,3 +14,7 @@ class RecipeCreateView(CreateView):
     model = Recipe
     fields = ["title", "content", "description"]
     success_url = "/"
+
+
+class RecipeDetailView(DetailView):
+    model = Recipe
