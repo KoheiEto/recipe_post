@@ -22,6 +22,12 @@
 
     </div>
     <hr>
+
+    <div class="row">
+      <div class="col">
+        <a href="{% url 'recipe-update' recipe.id %}">編集</a>
+      </div>
+    </div>
     <div class="row">
       <div class="col">
         <p class="text-muted">投稿日:{{ recipe.created }}</p>
