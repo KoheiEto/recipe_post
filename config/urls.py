@@ -16,12 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from lib.views import IndexTemplateView
-from recipe.views import RecipeListView, RecipeCreateView, RecipeDetailView
+from recipe.views import (RecipeListView, RecipeCreateView, RecipeDetailView,
+                          RecipeUpdateView)
 
 urlpatterns = [
+    # 管理者ページ
     path('admin/', admin.site.urls),
+    # レシピ一覧画面
     path('recipe/', RecipeListView.as_view(), name="recipe-index"),
+    # レシピ作成画面
     path('recipe/create', RecipeCreateView.as_view(), name="recipe-create"),
+    # レシピ詳細画面
     path('recipe/<int:pk>', RecipeDetailView.as_view(), name="recipe-detail"),
+    # レシピ更新画面
+    path('recipe/<int:pk>/update',
+         RecipeUpdateView.as_view(),
+         name="recipe-update"),
     path('', IndexTemplateView.as_view(), name="index"),
 ]
