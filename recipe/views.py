@@ -1,5 +1,5 @@
 # 汎用ビューの読み込み
-from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView,
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 # モデルの読み込み
 from .models import Recipe
 
