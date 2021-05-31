@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from lib.views import IndexTemplateView
 from recipe.views import (RecipeListView, RecipeCreateView, RecipeDetailView,
-                          RecipeUpdateView)
+                          RecipeUpdateView, RecipeDeleteView)
 
 urlpatterns = [
     # 管理者ページ
@@ -32,5 +32,8 @@ urlpatterns = [
     path('recipe/<int:pk>/update',
          RecipeUpdateView.as_view(),
          name="recipe-update"),
+    # レシピ削除画面
+    path('recipe/<int:pk>/delete',
+         RecipeDeleteView.as_view(), name="recipe-delete"),
     path('', IndexTemplateView.as_view(), name="index"),
 ]

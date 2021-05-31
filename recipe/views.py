@@ -1,5 +1,5 @@
 # 汎用ビューの読み込み
-from django.views.generic import ListView, CreateView, DetailView, UpdateView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 # モデルの読み込み
 from .models import Recipe
 
@@ -27,4 +27,9 @@ class RecipeDetailView(DetailView):
 class RecipeUpdateView(UpdateView):
     model = Recipe
     fields = ["title", "content", "description"]
+    success_url = "/"
+
+# レシピ削除用のview
+class RecipeDeleteView(DeleteView):
+    model = Recipe
     success_url = "/"
