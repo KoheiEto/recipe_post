@@ -13,19 +13,28 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django import urls
 from django.contrib import admin
 from django.urls import path
-from django.urls.conf import include
 from lib.views import IndexTemplateView
 from recipe.views import (RecipeListView, RecipeCreateView, RecipeDetailView,
                           RecipeUpdateView, RecipeDeleteView)
 
+app_name = "recipe"
+
 urlpatterns = [
-    # 管理者ページ
-    path('admin/', admin.site.urls),
+    
+    # レシピ一覧画面
+    path('', RecipeListView.as_view(), name="index"),
+    # レシピ作成画面
+    path('create', RecipeCreateView.as_view(), name="create"),
+    # レシピ詳細画面
+    path('<int:pk>', RecipeDetailView.as_view(), name="detail"),
+    # レシピ更新画面
+    path('<int:pk>/update',
+         RecipeUpdateView.as_view(),
+         name="update"),
+    # レシピ削除画面
+    path('<int:pk>/delete',
+         RecipeDeleteView.as_view(), name="delete"),
 
-    path('recipe/', include("recipe.urls")),
-
-    path('', IndexTemplateView.as_view(), name="index"),
 ]
