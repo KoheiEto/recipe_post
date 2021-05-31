@@ -3,6 +3,7 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView, D
 # モデルの読み込み
 from .models import Recipe
 
+from django.urls import reverse, reverse_lazy
 
 # 自作クラスを定義、ビューを継承
 # 一覧表示用のview
@@ -15,7 +16,7 @@ class RecipeListView(ListView):
 class RecipeCreateView(CreateView):
     model = Recipe
     fields = ["title", "content", "description"]
-    success_url = "/"
+    success_url = reverse_lazy("recipe:index")
 
 
 # 詳細表示用のview
