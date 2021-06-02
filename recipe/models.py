@@ -1,5 +1,6 @@
 from enum import auto
 from django.db import models
+from django.views.generic.edit import UpdateView
 
 
 # Create your models here.
@@ -10,6 +11,7 @@ class Recipe(models.Model):
     content = models.TextField()
     # 特徴
     description = models.TextField(blank=True, default="")
+    image = models.ImageField(upload_to="images/uploaded/", default=None, null=True, blank=True)
     # 作成日
     created = models.DateTimeField(auto_now_add=True)
     # 最終更新日
