@@ -16,7 +16,7 @@ class RecipeListView(ListView):
 # レシピ作成用のview
 class RecipeCreateView(CreateView):
     model = Recipe
-    fields = ["title", "content", "description"]
+    fields = ["title", "content", "description", "image"]
     success_url = reverse_lazy("recipe:index")
 
 
@@ -28,7 +28,7 @@ class RecipeDetailView(DetailView):
 # レシピ更新用のview
 class RecipeUpdateView(UpdateView):
     model = Recipe
-    fields = ["title", "content", "description"]
+    fields = ["title", "content", "description", "image"]
     def get_success_url(self):
         pk = self.kwargs.get("pk")
         return reverse("recipe:detail", kwargs={"pk": pk})
