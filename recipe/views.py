@@ -2,7 +2,7 @@
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 # モデルの読み込み
 from .models import Recipe
-
+from comment.forms import CommentForm
 
 from django.urls import reverse, reverse_lazy
 
@@ -31,6 +31,12 @@ class RecipeCreateView(CreateView):
 # 詳細表示用のview
 class RecipeDetailView(DetailView):
     model = Recipe
+
+    def get_context_date(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['CommentForm'] = CommentForm() 
+        return context
+
 
 
 # レシピ更新用のview
