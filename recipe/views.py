@@ -12,6 +12,14 @@ class RecipeListView(ListView):
     # 自作クラスにモデルを設定
     model = Recipe
 
+    def get_queryset(self):
+        qs = Recipe.objects.all()
+        keyword = self.request.GET.get("q")
+
+        if keyword:
+          qs = qs.filter(title__contains=keyword)
+        return qs
+
 
 # レシピ作成用のview
 class RecipeCreateView(CreateView):

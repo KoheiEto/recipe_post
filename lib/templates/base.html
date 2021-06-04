@@ -26,28 +26,35 @@
     <link rel="stylesheet" href="css/small-business.css">
     <div class="container">
       <a class="navbar-brand" href="#">レシピポスト</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
+      </button> -->
+      <!-- <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto"> -->
+          <!-- <li class="nav-item active">
             <a class="nav-link" href="#">Home
               <span class="sr-only">(current)</span>
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
+          </li> -->
+          <ul class="nav">
+            
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Contact</a>
+            </li>
+          </ul>
+        <!-- </ul> -->
+      <!-- </div> -->
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" name="q" value="{{ request.GET.q }}" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
     </div>
   </nav>
 
