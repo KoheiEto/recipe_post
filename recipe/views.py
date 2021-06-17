@@ -5,6 +5,8 @@ from .models import Recipe
 from comment.forms import CommentForm
 
 from django.urls import reverse, reverse_lazy
+from django import forms
+
 
 # 自作クラスを定義、ビューを継承
 # 一覧表示用のview
@@ -17,7 +19,7 @@ class RecipeListView(ListView):
         keyword = self.request.GET.get("q")
 
         if keyword:
-          qs = qs.filter(title__contains=keyword)
+            qs = qs.filter(title__contains=keyword)
         return qs
 
 
@@ -31,24 +33,31 @@ class RecipeCreateView(CreateView):
 # 詳細表示用のview
 class RecipeDetailView(DetailView):
     model = Recipe
-
-    def get_context_date(self, **kwargs):
+    """ def get_context_date(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['CommentForm'] = CommentForm() 
-        return context
 
+        context['CommentForm'] = CommentForm()
+
+        return context """
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['CommentForm'] = CommentForm()
+
+        return context
 
 
 # レシピ更新用のview
 class RecipeUpdateView(UpdateView):
     model = Recipe
     fields = ["title", "content", "description", "image"]
+
     def get_success_url(self):
         pk = self.kwargs.get("pk")
         return reverse("recipe:detail", kwargs={"pk": pk})
+
 
 # レシピ削除用のview
 class RecipeDeleteView(DeleteView):
     model = Recipe
     success_url = reverse_lazy("recipe:index")
-    
