@@ -1,5 +1,6 @@
 from enum import auto
 from django.db import models
+from django.contrib.auth.models import User
 from django.views.generic.edit import UpdateView
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
@@ -21,12 +22,17 @@ class Recipe(models.Model):
         format="jpeg",
         options={"quality": 80}
     )
+    # user
+    user = models.ForeignKey(User,
+                             on_delete=models.CASCADE,
+                             default=None,
+                             null=True)
     # 作成日
     created = models.DateTimeField(auto_now_add=True)
     # 最終更新日
     modified = models.DateTimeField(auto_now=True)
 
-    
+
 
 
 # データベースにデータ反映する＝マイグレーション
