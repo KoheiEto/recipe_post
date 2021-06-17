@@ -32,6 +32,7 @@ class RecipeCreateView(CreateView):
 
 # 詳細表示用のview
 class RecipeDetailView(DetailView):
+    # recipe = Recipe.objects.get(id=pk)
     model = Recipe
     """ def get_context_date(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -41,8 +42,9 @@ class RecipeDetailView(DetailView):
         return context """
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        context['CommentForm'] = CommentForm()
+        # self.object = self.get_object()
+        # self.object = Recipe.objects.get(id=pk)
+        context['CommentForm'] = CommentForm(initial={'recipe': self.object})
 
         return context
 
