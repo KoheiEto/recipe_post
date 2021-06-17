@@ -10,3 +10,5 @@ class CommentForm(forms.ModelForm):
             "content",
             "recipe",
         ]
+        widgets = {"recipe": forms.HiddenInput()}
+        labels = {"content": "コメントをどうぞ"}
