@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django import urls
 from django.contrib import admin
+from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 from django.urls.conf import include
 from lib.views import IndexTemplateView
@@ -27,5 +28,9 @@ urlpatterns = [
     path('recipe/', include("recipe.urls")),
     path('comment/', include("comment.urls", namespace="comment")),
     path('staffroom/', include("staffroom.urls", namespace="staffroom")),
+    path('login', LoginView.as_view(template_name="login.html"), name="login"),
+    path('logout',
+         LogoutView.as_view(template_name="logout.html"),
+         name="logout"),
     path('', IndexTemplateView.as_view(), name="index"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

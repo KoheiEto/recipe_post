@@ -66,13 +66,15 @@
   </div>
 </div>
 
+{% if request.user.is_authenticated and request.user == recipe.user %}
+<hr>
 <div class="row">
   <div class="col">
     <a class="btn btn-info" href="{% url 'staffroom:recipe:update' recipe.id %}">編集</a>
     <a class="btn btn-danger" href="{% url 'staffroom:recipe:delete' recipe.id %}"
-      >削除</a
-    >
+      >削除</a>
   </div>
 </div>
+{% endif %}
 
 {% endblock %}
