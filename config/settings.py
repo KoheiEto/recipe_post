@@ -138,4 +138,4 @@ MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = reverse_lazy("staffroom:index")
+LOGIN_REDIRECT_URL = reverse_lazy("index")

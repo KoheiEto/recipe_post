@@ -22,15 +22,13 @@
         <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid">
-            <h1 class="mt-4"><a class="nav-link" href="{% url 'staffroom:index' %}">Dashboard</a></h1>
-            <a class="dropdown-item" href="{% url 'logout' %}">ログアウト</a>
-
+            <h1 class="mt-4"><a class="nav-link" href="{% url 'staffroom:index' %}">{{ request.user.username }}Dashboard</a></h1>  
             
             {% block breadcrumbs %} 
-            <ol class="breadcrumb mb-4">
+            {% comment %} <ol class="breadcrumb mb-4"> {% endcomment %}
                 {% comment %} <li class="breadcrumb-item active">Dashboard</li> {% endcomment %}
-                <a class="nav-link" href="{% url 'staffroom:index' %}">Dashboard</a>
-            </ol>
+                {% comment %} <a class="nav-link" href="{% url 'staffroom:index' %}">Dashboard</a> {% endcomment %}
+            {% comment %} </ol> {% endcomment %}
             
             {% endblock %} 
 
