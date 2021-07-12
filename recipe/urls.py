@@ -16,8 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from lib.views import IndexTemplateView
-from recipe.views import (RecipeListView, RecipeCreateView, RecipeDetailView,
-                          RecipeUpdateView, RecipeDeleteView)
+from recipe.views import (RecipeListView, RecipeDetailView,
+                          )
 
 app_name = "recipe"
 
@@ -25,16 +25,8 @@ urlpatterns = [
     
     # レシピ一覧画面
     path('', RecipeListView.as_view(), name="index"),
-    # レシピ作成画面
-    path('create', RecipeCreateView.as_view(), name="create"),
     # レシピ詳細画面
     path('<int:pk>', RecipeDetailView.as_view(), name="detail"),
-    # レシピ更新画面
-    path('<int:pk>/update',
-         RecipeUpdateView.as_view(),
-         name="update"),
-    # レシピ削除画面
-    path('<int:pk>/delete',
-         RecipeDeleteView.as_view(), name="delete"),
+    
 
 ]

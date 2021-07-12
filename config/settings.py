@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'recipe',
     'comment',
+    'staffroom',
     'crispy_forms',
     'imagekit',
 ]

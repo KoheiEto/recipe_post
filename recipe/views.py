@@ -26,7 +26,8 @@ class RecipeListView(ListView):
 # レシピ作成用のview
 class RecipeCreateView(CreateView):
     model = Recipe
-    fields = ["title", "content", "description", "image"]
+    # form_class = forms
+    fields = ["title", "content", "description", "image", "user"]
     success_url = reverse_lazy("recipe:index")
 
 
