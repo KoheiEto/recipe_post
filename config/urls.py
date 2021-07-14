@@ -30,7 +30,7 @@ urlpatterns = [
     path('staffroom/', include("staffroom.urls", namespace="staffroom")),
     path('login', LoginView.as_view(template_name="login.html"), name="login"),
     path('logout',
-         LogoutView.as_view(template_name="logout.html"),
+         LogoutView.as_view(template_name="index.html"),
          name="logout"),
     path('', IndexTemplateView.as_view(), name="index"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

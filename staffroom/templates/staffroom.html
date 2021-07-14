@@ -24,13 +24,13 @@
         <div class="container-fluid">
             <h1 class="mt-4"><a class="nav-link" href="{% url 'staffroom:index' %}">{{ request.user.username }}Dashboard</a></h1>  
             
-            {% block breadcrumbs %} 
-            {% comment %} <ol class="breadcrumb mb-4"> {% endcomment %}
-                {% comment %} <li class="breadcrumb-item active">Dashboard</li> {% endcomment %}
-                {% comment %} <a class="nav-link" href="{% url 'staffroom:index' %}">Dashboard</a> {% endcomment %}
-            {% comment %} </ol> {% endcomment %}
+            {% comment %} {% block breadcrumbs %} 
+             <ol class="breadcrumb mb-4"> 
+                 <li class="breadcrumb-item active">Dashboard</li> 
+                 <a class="nav-link" href="{% url 'staffroom:index' %}">Dashboard</a> 
+            </ol> 
             
-            {% endblock %} 
+            {% endblock %}  {% endcomment %}
 
             {% block body %}{% endblock %}
         </div>
