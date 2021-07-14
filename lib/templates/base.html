@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -26,17 +27,16 @@
     <link rel="stylesheet" href="css/small-business.css">
     <div class="container">
       <a class="navbar-brand" href="{% url 'index' %}">{{ request.user.username }}レシピポスト</a>
-      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button> -->
-      <!-- <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto"> -->
-          <!-- <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li> -->
+      </button> 
+      
+          
+          <nav class="navbar navbar-dark bg-dark">
+          <!-- Navbar content -->
+          </nav>
+
           <ul class="nav">
           　
             <li class="nav-item">
@@ -45,6 +45,11 @@
             <li class="nav-item">
               <a class="nav-link text-white" href="{% url 'recipe:index' %}">レシピ</a>
             </li>
+            {% if request.user.is_authenticated %}
+            <li>
+              <a class="nav-link text-white" href="{% url 'staffroom:recipe:create' %}">レシピ新規作成</a>
+            </li>
+            {% endif %}
             <li>
               <a class="nav-link text-white" href="{% url 'login' %}">ログイン</a>
             </li>
@@ -69,6 +74,9 @@
     <!-- /.row -->
   </div>
   <!-- /.container -->
+  
+
+ 
 
   <!-- Footer -->
   <footer class="py-5 bg-dark mt-3">
