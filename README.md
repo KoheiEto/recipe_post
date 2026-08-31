@@ -1,37 +1,41 @@
 # recipe_post
 
 recipe_post は、料理レシピを投稿・閲覧・管理できる Django アプリです。  
-レシピの登録、一覧表示、編集、削除を簡単に行えます。
+EC2 上での本番運用も想定しており、レシピの登録、表示、編集、削除を簡単に行えます。
 
 ## 概要
 
-レシピを保存して管理するための Web アプリです。  
-Django を使い、レシピの投稿と表示を簡単に実装できます。
+レシピを保存・管理するための Web アプリです。  
+Django を使って構築されており、ローカル開発から EC2 上での公開運用まで対応できます。
 
-主な機能:
+## 主な機能
+
 - レシピの新規作成
 - レシピ一覧表示
-- 詳細表示
+- レシピ詳細表示
 - 編集・削除
 - 画像やメモの管理
 - 管理画面での運用
+- EC2 上での公開運用
 
 ## 技術スタック
 
 - Python
 - Django
 - SQLite / PostgreSQL
+- Nginx
+- Gunicorn
 - HTML / CSS / JavaScript
 
-## インフラ構成
+## 構成
 
 ```mermaid
 flowchart LR
     User --> Browser
     Browser --> Nginx
-    Nginx --> Django
-    Django --> DB[(PostgreSQL / SQLite)]
-    Django --> Storage[(Cloud Storage)]
+    Nginx --> Gunicorn
+    Gunicorn --> Django
+    Django --> DB[(PostgreSQL)]
 ```
 
 ## 必要条件
@@ -93,8 +97,6 @@ DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
 DATABASE_URL=sqlite:///db.sqlite3
 ```
-
-本番環境では、DB 接続情報やシークレットを Git に含めず、外部の環境変数で管理するのが安全です。
 
 5. データベースを作成する
 
@@ -200,13 +202,12 @@ recipe_post/
 
 ## 本番環境への展開
 
+本番環境では、次のような構成が一般的です。
+
 - Web サーバー: Nginx / Cloud Run / App Service 等
 - Application: Django
 - Database: PostgreSQL
-- File Storage: S3 / Cloud Storage / Blob Storage
 - Secret Management: .env / Secrets Manager / Vault
-
-この構成により、データの永続化と運用の安定性を高めることができます。
 
 ## まとめ
 
